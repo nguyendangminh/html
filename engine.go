@@ -203,3 +203,9 @@ func (e *Engine) Render(out io.Writer, template string, binding interface{}, lay
 	}
 	return tmpl.Execute(out, binding)
 }
+
+func (e *Engine) logErrInDebug(err error) {
+	if e.debug && err != nil {
+		fmt.Printf("error: %s\n", err)
+	}
+}
